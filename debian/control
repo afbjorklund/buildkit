@@ -1,0 +1,37 @@
+Source: buildkit
+Section: devel
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian Go Packaging Team <pkg-go-maintainers@lists.alioth.debian.org>
+Uploaders: Alexandre Viau <aviau@debian.org>,
+           Dmitry Smirnov <onlyjob@debian.org>,
+           Anders F Björklund <anders.f.bjorklund@gmail.com>
+Build-Depends: debhelper (>= 11~),
+               dh-golang,
+               go-md2man,
+               golang-any,
+               libapparmor-dev,
+               libseccomp-dev,
+               pkg-config,
+               protobuf-compiler
+Standards-Version: 4.1.4
+Homepage: https://github.com/moby/buildkit/
+Vcs-Git: https://salsa.debian.org/go-team/packages/buildkit.git
+Vcs-Browser: https://salsa.debian.org/go-team/packages/buildkit
+XS-Go-Import-Path: github.com/moby/buildkit
+
+Package: buildkit
+Architecture: any
+Depends: runc | containerd.io, containerd | containerd.io, ${misc:Depends}, ${shlibs:Depends}
+Built-Using: ${misc:Built-Using}
+Description: BuildKit
+ BuildKit is a toolkit for converting source code to build artifacts in an
+ efficient, expressive and repeatable manner.
+
+Package: golang-github-moby-buildkit-dev
+Architecture: all
+Depends: ${misc:Depends}
+Description: BuildKit - development files
+ BuildKit is a toolkit for converting source code to build artifacts in an
+ efficient, expressive and repeatable manner.
+
