@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DH_GOPKG := github.com/moby/buildkit
+TAGS=seccomp
+
+%:
+	dh $@ --buildsystem=golang --with=golang --builddirectory=_build
+
+override_dh_auto_configure:
+	dh_auto_configure
+	## Remove extra license files:
+	$(RM) -v \
+            _build/src/$(DH_GOPKG)/vendor/github.com/docker/docker/*/*/LICENSE* \
+        ;
+
+override_dh_auto_build:
+	dh_auto_build -- -tags "$(TAGS)"
+
+override_dh_auto_test:
+	-dh_auto_test -- -tags "$(TAGS)"
