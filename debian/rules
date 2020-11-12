@@ -3,8 +3,13 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+DEBVER := $(shell dpkg-parsechangelog -SVersion)
+DEBVERSION := $(shell echo "$(DEBVER)" | cut -d- -f1)
+
 export DH_GOPKG := github.com/moby/buildkit
 TAGS=seccomp
+
+LINKERFLAGS=-X $(DH_GOPKG)/version.Version=v$(DEBVERSION)
 
 %:
 	dh $@ --buildsystem=golang --with=golang --builddirectory=_build
@@ -17,7 +22,7 @@ override_dh_auto_configure:
         ;
 
 override_dh_auto_build:
-	dh_auto_build -- -tags "$(TAGS)"
+	dh_auto_build -- -tags "$(TAGS)" -ldflags "$(LINKERFLAGS)"
 
 override_dh_auto_test:
 	-dh_auto_test -- -tags "$(TAGS)"
