@@ -1,2 +1,2 @@
 usr/bin/buildctl
-usr/bin/buildkitd /usr/sbin
+usr/bin/buildkitd
