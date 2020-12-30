@@ -1,3 +1,9 @@
+buildkit (0.8.1-1) focal; urgency=medium
+
+  * Update version
+
+ -- Anders F Björklund <anders.f.bjorklund@gmail.com>  Wed, 30 Dec 2020 18:52:07 +0100
+
 buildkit (0.7.2-1) focal; urgency=medium
 
   * Copied packaging from runc.
