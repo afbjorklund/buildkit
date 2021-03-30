@@ -1,3 +1,9 @@
+buildkit (0.8.2-1) focal; urgency=medium
+
+  * Update version
+
+ -- Anders F Björklund <anders.f.bjorklund@gmail.com>  Tue, 30 Mar 2021 21:29:52 +0200
+
 buildkit (0.8.1-1) focal; urgency=medium
 
   * Update version
